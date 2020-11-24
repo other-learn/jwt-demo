@@ -9,6 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -31,15 +34,17 @@ public class JwtConfig {
      * @param subject
      * @return
      */
-    public String createToken (String subject){
-        Date nowDate = new Date();
+    public String createToken (String subject) {
+        LocalDateTime nowDate = LocalDateTime.now();
+//        Date nowDate = new Date();
         // 过期时间
-        Date expireDate = new Date(nowDate.getTime() + expire * 1000);
+        LocalDateTime expireDate = nowDate.plusSeconds(expire);
+//        Date expireDate = new Date(nowDate.getTime() + expire * 1000);
         return Jwts.builder()
                 .setHeaderParam("typ", "JWT")
                 .setSubject(subject)
-                .setIssuedAt(nowDate)
-                .setExpiration(expireDate)
+                .setIssuedAt(Date.from(nowDate.atZone(ZoneId.systemDefault()).toInstant()))
+                .setExpiration(Date.from(expireDate.atZone(ZoneId.systemDefault()).toInstant()))
                 // 加密
                 .signWith(SignatureAlgorithm.HS512, secret)
                 .compact();

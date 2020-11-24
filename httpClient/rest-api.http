@@ -10,7 +10,7 @@ Cache-Control: no-cache
 POST http://localhost:8080/jwt/info
 Accept: */*
 Cache-Control: no-cache
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNjA2MjA3NTQ5LCJleHAiOjE2MDYyMTExNDl9.ZHEi_Qc4DiXEKJ7z5H4tH34_U_Ov1X68Fu04IcdzY_HGgfg6XOH7w89VE3lYO2Xk5DWe_q6dIcUThcVEq6hNIw
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNjA2MjEwMzk1LCJleHAiOjE2MDYyMTM5OTV9.ofanKes8bs1gO_21Ket6GMQ5if-T5hUwb_0L4RDIdPIwEKRD2zpiHTOauL1OVQQXdyjP_9T4m48Eq55SmlCJrg
 ###
 
 #根据请求头的token获取userId
