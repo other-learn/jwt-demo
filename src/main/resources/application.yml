@@ -1,0 +1,20 @@
+server:
+    port: 8080
+spring:
+    application:
+        name: springboot-jwt
+logging:
+    level:
+        root: warn
+        com.lm.example.jwtdemo.adapter: debug
+# 自定义配置
+config:
+    jwt:
+        # 加密密钥
+        secret: abcdefg1234567
+        # token有效时长
+        expire: 3600
+        # header 名称
+        header: token
+        ignore:
+            - /jwt/login

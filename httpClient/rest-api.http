@@ -1,0 +1,21 @@
+###
+#用户登录测试
+POST http://localhost:8080/jwt/login?userName=haha&passWord=123
+Accept: */*
+Cache-Control: no-cache
+###
+
+###
+#随意测试一个需要 Token 验证的接口
+POST http://localhost:8080/jwt/info
+Accept: */*
+Cache-Control: no-cache
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNjA2MjA3NTQ5LCJleHAiOjE2MDYyMTExNDl9.ZHEi_Qc4DiXEKJ7z5H4tH34_U_Ov1X68Fu04IcdzY_HGgfg6XOH7w89VE3lYO2Xk5DWe_q6dIcUThcVEq6hNIw
+###
+
+#根据请求头的token获取userId
+GET http://localhost:8080/jwt/getUserInfo
+Accept: */*
+Cache-Control: no-cache
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNjA2MjAzNTIzLCJleHAiOjE2MDYyMDcxMjN9.1hS1g9wiwYcQK3ZZPyQcb67e6KNDhIhKob-LWOVpFImtRa4OFKiMI2F2hZfR9sVTDqD_Tt4XM_5AAGuAx7rgew
+###
