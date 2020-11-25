@@ -7,10 +7,10 @@ Cache-Control: no-cache
 
 ###
 #随意测试一个需要 Token 验证的接口
-POST http://localhost:8080/jwt/info
+GET http://localhost:8080/jwt/info
 Accept: */*
 Cache-Control: no-cache
-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNjA2MjEwMzk1LCJleHAiOjE2MDYyMTM5OTV9.ofanKes8bs1gO_21Ket6GMQ5if-T5hUwb_0L4RDIdPIwEKRD2zpiHTOauL1OVQQXdyjP_9T4m48Eq55SmlCJrg
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1IiwiaWF0IjoxNjA2MjY5NDM5LCJleHAiOjE2MDYyNzMwMzl9.XaTOcKZ5T5HH9Az1AsMd508SOuLGOCjx-1bLfqTcOEUo5AHzNqV2JmtVKn2r2zNRNzp9MNIc_YzPlmDdkLPK5A
 ###
 
 #根据请求头的token获取userId

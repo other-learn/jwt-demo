@@ -1,6 +1,7 @@
 package com.lm.example.jwtdemo.adapter;
 
 import com.lm.example.jwtdemo.config.JwtConfig;
+import com.lm.example.jwtdemo.util.JwtTool;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
@@ -58,8 +59,8 @@ public class TokenInterceptor implements AsyncHandlerInterceptor {
 
         Claims claims;
         try{
-            claims = jwtConfig.getTokenClaim(token);
-            if(claims == null || jwtConfig.isTokenExpired(claims.getExpiration())){
+            claims = JwtTool.getTokenClaim(token, jwtConfig);
+            if(claims == null || JwtTool.isTokenExpired(claims.getExpiration())){
                 throw new SignatureException(jwtConfig.getHeader() + "失效，请重新登录。");
             }
         }catch (Exception e){

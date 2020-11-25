@@ -16,7 +16,7 @@ import java.security.SignatureException;
 public class PermissionHandler {
     @ExceptionHandler(value = { SignatureException.class })
     @ResponseBody
-    public ResultVO<?> authorizationException(SignatureException e){
+    public ResultVO authorizationException(SignatureException e){
         return ResultTool.error(e.getMessage());
     }
 }

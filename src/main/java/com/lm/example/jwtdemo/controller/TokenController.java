@@ -3,6 +3,7 @@ package com.lm.example.jwtdemo.controller;
 import cn.hutool.json.JSONObject;
 import com.lm.example.jwtdemo.config.JwtConfig;
 import com.lm.example.jwtdemo.model.vo.ResultVO;
+import com.lm.example.jwtdemo.util.JwtTool;
 import com.lm.example.jwtdemo.util.ResultTool;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
@@ -38,7 +39,7 @@ public class TokenController {
         // 这里模拟通过用户名和密码，从数据库查询userId
         // 这里把userId转为String类型，实际开发中如果subject需要存userId，则可以JwtConfig的createToken方法的参数设置为Long类型
         String userId = 5 + "";
-        String token = jwtConfig.createToken(userId) ;
+        String token = JwtTool.createToken(userId, jwtConfig) ;
         if (StringUtils.hasText(token)) {
             json.set("token", token) ;
         }
@@ -48,7 +49,7 @@ public class TokenController {
     /**
      * 需要 Token 验证的接口
      */
-    @PostMapping("/info")
+    @GetMapping("/info")
     public ResultVO<?> info (){
         return ResultTool.success("info") ;
     }
@@ -60,7 +61,7 @@ public class TokenController {
      */
     @GetMapping("/getUserInfo")
     public ResultVO<?> getUserInfo(HttpServletRequest request){
-        String usernameFromToken = jwtConfig.getUsernameFromToken(request.getHeader("token"));
+        String usernameFromToken = JwtTool.getUsernameFromToken(request.getHeader("token"), jwtConfig);
         return ResultTool.success(usernameFromToken) ;
     }
 }
