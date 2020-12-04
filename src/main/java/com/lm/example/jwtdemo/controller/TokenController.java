@@ -1,6 +1,7 @@
 package com.lm.example.jwtdemo.controller;
 
 import cn.hutool.json.JSONObject;
+import com.lm.example.jwtdemo.auth.annotation.HasAnyRole;
 import com.lm.example.jwtdemo.config.JwtConfig;
 import com.lm.example.jwtdemo.model.vo.ResultVO;
 import com.lm.example.jwtdemo.util.JwtTool;
@@ -50,7 +51,8 @@ public class TokenController {
      * 需要 Token 验证的接口
      */
     @GetMapping("/info")
-    public ResultVO<?> info (){
+    @HasAnyRole(roles = "admin")
+    public ResultVO<?> info (HttpServletRequest request){
         return ResultTool.success("info") ;
     }
 
